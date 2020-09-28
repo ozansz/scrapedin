@@ -23,7 +23,7 @@ module.exports = async ({ cookies, email, password, isHeadless, hasToLog, hasToG
   if (cookies) {
     logger.info('using cookies, login will be bypassed')
   } else if (email && password) {
-    logger.info('email and password was provided, we\'re going to login...')
+    logger.info(`email (${email}) and password was provided, we're going to login...`)
 
     try {
       await login(browser, email, password, logger)

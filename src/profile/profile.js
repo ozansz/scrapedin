@@ -9,12 +9,12 @@ const cleanProfileData = require('./cleanProfileData')
 
 const logger = require('../logger')(__filename)
 
-module.exports = async (browser, cookies, url, waitTimeToScrapMs = 500, hasToGetContactInfo = false, puppeteerAuthenticate = undefined) => {
+module.exports = async (browser, cookies, url, waitTimeToScrapMs = 500, profilePageLoadTimeout, hasToGetContactInfo = false, puppeteerAuthenticate = undefined) => {
   logger.info(`starting scraping url: ${url}`)
 
   const page = await openPage({ browser, cookies, url, puppeteerAuthenticate })
   const profilePageIndicatorSelector = '.pv-profile-section'
-  await page.waitFor(profilePageIndicatorSelector, { timeout: 5000 })
+  await page.waitFor(profilePageIndicatorSelector, { timeout: profilePageLoadTimeout })
     .catch(() => {
       //why doesn't throw error instead of continuing scraping?
       //because it can be just a false negative meaning LinkedIn only changed that selector but everything else is fine :)

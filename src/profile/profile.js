@@ -55,6 +55,10 @@ module.exports = async (browser, cookies, url, waitTimeToScrapMs = 500, hasToGet
   await page.close()
   logger.info(`finished scraping url: ${url}`)
 
+  if (about === undefined) {
+    about = {}
+  }
+
   const rawProfile = {
     profile,
     about,

@@ -37,7 +37,7 @@ module.exports = async (browser, cookies, url, waitTimeToScrapMs = 500, hasToGet
   }
 
   const [profile] = await scrapSection(page, template.profile)
-  const [about] = await scrapSection(page, template.about)
+  let [about] = await scrapSection(page, template.about)
   const positions = await scrapSection(page, template.positions)
   const educations = await scrapSection(page, template.educations)
   const [recommendationsCount] = await scrapSection(page, template.recommendationsCount)

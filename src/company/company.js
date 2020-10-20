@@ -18,7 +18,7 @@ module.exports = async (browser, cookies, url, waitTimeToScrapMs = 500, puppetee
 
     page = await openPage({ browser, cookies, url, puppeteerAuthenticate });
 
-    const [allEmployeesLink] = await page.$x('//a[@data-control-name="topcard_see_all_employees"]');
+    const [allEmployeesLink] = await page.$x(`//a[contains(@href,'/search/results/people/?facetCurrentCompany')]`);
 
     if (allEmployeesLink) {
         const href = await page.evaluate(element => element.href, allEmployeesLink)

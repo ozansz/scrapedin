@@ -26,7 +26,7 @@ module.exports = async ({ cookies, email, password, isHeadless, hasToLog, hasToG
     logger.info(`email (${email}) and password was provided, we're going to login...`)
 
     try {
-      await login(browser, email, password, logger, puppeteerAuthenticate)
+      await login(browser, email, password, puppeteerAuthenticate)
     } catch (e) {
       if(!endpoint){
         await browser.close()
